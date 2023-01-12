@@ -1,32 +1,36 @@
-﻿using addressbook;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment3
+﻿
+public class AddressBook
 {
-    public class addressbookapp
+    public readonly List<Contact>  _contact;
+    public AddressBook()
     {
-        private Hashtable addressBook = new Hashtable();
-        public void AddContact(contact contact)
-        {
-            addressBook.Add(contact.FirstName,contact);
-            addressBook.Add(contact.LastName, contact);
-            addressBook.Add(contact.Email, contact);
-            addressBook.Add(contact.PhoneNumber, contact);
-        }
-        public void RemoveContact(contact contact)
-        {
-            addressBook.Remove(contact.FirstName);
-            addressBook.Remove(contact.LastName);
-            addressBook.Remove(contact.Email);
-            addressBook.Remove(contact.PhoneNumber);
-        }
-      
-            
-    
+     _contact = new List<Contact>();
     }
+    public void AddContact(Contact contact)
+    {
+        _contact.Add(contact);
+    }
+    public void RemoveContact(Contact contact)
+    {
+        _contact.Remove(contact);
+    }
+    public void SortContacts()
+    {
+
+        IEnumerable<Contact> sortedContacts =_contact.OrderByDescending(name => name.firstName).ToList();
+        foreach (Contact contact in sortedContacts)
+
+        {
+            Console.WriteLine(contact);
+        }
+    }
+    public void PrintContacts()
+    {
+      foreach (var item in _contact)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+
 }
