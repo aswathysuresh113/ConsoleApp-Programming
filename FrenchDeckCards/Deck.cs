@@ -1,59 +1,63 @@
-﻿using System;
-using System.Diagnostics.Contracts;
+﻿namespace FrenchDeck;
 
 public class Deck
 {
-    public List<Card> Cards = new List<Card>();
-    public void CreateDeck()
+    private readonly List<Card> _cards = new List<Card>(52);
+    private static readonly Random Random = new Random();
+
+    static Deck()
     {
-        for (int i = 0; i < 52; i++)
+        Ranks = Enumerable.Range(2, 9)
+            .Select(n => n.ToString())
+            .ToList();
+        Ranks.AddRange(new[] { "J", "Q", "K", "A" });
+    }
+
+    // default constructor
+    public Deck()
+    {
+        var suites = Enum.GetValues<Suite>();
+
+        foreach (var t in suites)
         {
-            Card.Suites suite = (Card.Suites)(Math.Floor((decimal)i / 13));
-            int val = i % 13 + 2;
-            Cards.Add(new Card(val, suite));
+            foreach (var r in Ranks)
+            {
+                _cards.Add(new Card(r, t));
+            }
         }
     }
 
-    public void PrintDeck()
+    public List<Card> Cards => _cards;
+    public static List<string> Ranks { get; }
+
+    public void Print()
     {
-        foreach (Card card in this.Cards)
+        foreach (var card in _cards)
         {
-            Console.WriteLine(card.Name);
+            Console.WriteLine(card);
         }
     }
 
-    public void Random()
+    public Card RandomCard()
     {
-
-        var random = new Random();
-        int index = random.Next(0, Cards.Count);
-
-        {
-            Console.WriteLine($"Your Random Card is {index}");
-        }
-
+        return _cards[Random.Next(_cards.Count)];
     }
-    public void Shuffle()
+
+    public void ShuffleCards()
     {
-        for (var i = Cards.Count - 1; i > 0; i--)
+        // Fischer-Yates shuffle algorithm
+        var n = _cards.Count;
+        while (n > 1)
         {
-            var temp = Cards[i];
-            var random = new Random();
-            var index = random.Next(0, i + 1);
-            Cards[i] = Cards[index];
-            Cards[index] = temp;
-            
-          Console.WriteLine($"Your Shuffled Card is {Cards[index]}");
-            
+            n--;
+            var k = Random.Next(n + 1);
+            (_cards[k], _cards[n]) = (_cards[n], _cards[k]);
         }
     }
-   // public void SortedList()
-    //{
-     //   var sorted = Cards
-     //.GroupBy(l => l.Suite)
-     //.OrderByDescending(g => g.Count())
-    // .SelectMany(g => g.OrderByDescending(c => c.Value));
 
-   // }
+    public void SortDeck()
+    {
+        _cards.Sort(new CardComparator());
+    }
+
 }
-    
