@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopingCart", "ShopingCart\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrenchDeckCards", "FrenchDeckCards\FrenchDeckCards.csproj", "{922CA414-EDD8-4D3E-B49C-9525AB040368}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentDay5", "AssignmentDay5\AssignmentDay5.csproj", "{6305A2B8-5728-4672-A35B-0AF7DCE0A1AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssignmentDay5", "AssignmentDay5\AssignmentDay5.csproj", "{6305A2B8-5728-4672-A35B-0AF7DCE0A1AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assignment6", "assignment6\assignment6.csproj", "{5695C366-24F0-4466-81AA-5918696E395C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{6305A2B8-5728-4672-A35B-0AF7DCE0A1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6305A2B8-5728-4672-A35B-0AF7DCE0A1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6305A2B8-5728-4672-A35B-0AF7DCE0A1AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5695C366-24F0-4466-81AA-5918696E395C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5695C366-24F0-4466-81AA-5918696E395C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5695C366-24F0-4466-81AA-5918696E395C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5695C366-24F0-4466-81AA-5918696E395C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
